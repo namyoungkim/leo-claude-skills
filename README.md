@@ -15,7 +15,7 @@
 
 ```bash
 # 1. 저장소 클론
-git clone https://github.com/YOUR_USERNAME/leo-claude-skills.git ~/leo-claude-skills
+git clone https://github.com/namyoungkim/leo-claude-skills.git ~/leo-claude-skills
 
 # 2. 심볼릭 링크 생성 (초기 1회)
 ./scripts/sync-to-claude-code.sh
