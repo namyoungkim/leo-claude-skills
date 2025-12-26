@@ -12,7 +12,8 @@ Personal Claude Skills repository for use with Claude Code, Claude.ai, and API. 
 leo-claude-skills/
 ├── <skill-name>/
 │   ├── SKILL.md           # Required - skill definition with YAML frontmatter
-│   └── references/        # Optional - additional context files
+│   ├── references/        # Optional - additional context files
+│   └── assets/            # Optional - templates, config files
 └── scripts/
     ├── sync-to-claude-code.sh
     └── skill-manager.sh

@@ -39,7 +39,11 @@ zip -r python-project.zip python-project/
 leo-claude-skills/
 ├── README.md
 ├── python-project/
-│   └── SKILL.md
+│   ├── SKILL.md
+│   ├── references/
+│   │   └── tooling.md
+│   └── assets/
+│       └── pyproject-template.toml
 ├── coding-problem-solver/
 │   ├── SKILL.md
 │   └── references/
@@ -105,5 +109,6 @@ description: ...          # 200자 이내, 트리거 조건 포함
 
 ## 📝 변경 이력
 
+- 2025-12-26: python-project에 references/, assets/ 추가
 - 2025-12-26: skill-manager.sh 추가 (스킬 활성화/비활성화)
 - 2025-12-26: python-project, coding-problem-solver 초기 추가
