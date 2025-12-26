@@ -4,7 +4,6 @@
 
 set -e
 
-SKILLS_REPO="$HOME/leo-claude-skills"
 CLAUDE_SKILLS="$HOME/.claude/skills"
 DISABLED_DIR="$HOME/.claude/skills-disabled"
 
