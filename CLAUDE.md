@@ -34,6 +34,8 @@ description: ...          # 200 chars max, include trigger conditions
 
 - **python-project**: Python project setup with uv + ruff + ty + pytest (Astral Toolchain)
 - **coding-problem-solver**: Structured coding interview problem solving for Staff-level preparation
+- **git-workflow**: GitHub Flow branching strategy, commit message conventions, PR workflows
+- **git-worktree**: Git worktree for parallel Claude development, multiple instances
 
 ## Scripts
 
