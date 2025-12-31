@@ -82,9 +82,37 @@ docs: add API documentation
 chore: update dependencies
 ```
 
+## Branch Protection (main)
+
+main 브랜치에 직접 push 금지, PR을 통해서만 머지.
+
+### GitHub 웹에서 설정
+
+Settings > Branches > Add rule:
+- Branch name pattern: `main`
+- [x] Require a pull request before merging
+
+### gh CLI로 설정
+
+```bash
+gh api repos/{owner}/{repo}/branches/main/protection -X PUT \
+  -H "Accept: application/vnd.github+json" \
+  -f "required_pull_request_reviews[dismiss_stale_reviews]=false" \
+  -f "required_pull_request_reviews[require_code_owner_reviews]=false" \
+  -f "required_pull_request_reviews[required_approving_review_count]=0" \
+  -f "enforce_admins=false" \
+  -f "restrictions=null"
+```
+
+### 보호 규칙 확인
+
+```bash
+gh api repos/{owner}/{repo}/branches/main/protection
+```
+
 ## Exceptions
 
-- Typos, single-line fixes: direct commit to `main` allowed
+- Typos, single-line fixes: ~~direct commit to `main` allowed~~ PR 필수
 - No `dev` branch needed (Preview deployment serves as staging)
 
 ## Common Commands
