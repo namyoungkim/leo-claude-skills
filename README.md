@@ -10,6 +10,8 @@
 | [coding-problem-solver](./coding-problem-solver/) | 코딩 인터뷰 문제 풀이 정리 | LeetCode 링크, "문제 풀어줘" |
 | [git-workflow](./git-workflow/) | GitHub Flow 브랜치 전략, 커밋 컨벤션 | "브랜치 전략", "커밋 메시지" |
 | [git-worktree](./git-worktree/) | Git worktree 병렬 개발 가이드 | "worktree", "병렬 Claude" |
+| [opensearch-client](./opensearch-client/) | OpenSearch Python 클라이언트 (하이브리드 검색) | "OpenSearch 쿼리", "벡터 검색" |
+| [opensearch-server](./opensearch-server/) | Docker 기반 OpenSearch 서버 관리 | "OpenSearch 시작", "Docker 설정" |
 
 ## 🚀 사용 방법
 
@@ -40,20 +42,17 @@ zip -r python-project.zip python-project/
 ```
 leo-claude-skills/
 ├── README.md
+├── <skill-name>/
+│   ├── SKILL.md           # Required
+│   ├── scripts/           # Optional - 실행 가능한 스크립트
+│   ├── references/        # Optional - 참조 문서
+│   └── assets/            # Optional - 템플릿, 리소스
 ├── python-project/
-│   ├── SKILL.md
-│   ├── references/
-│   │   └── tooling.md
-│   └── assets/
-│       └── pyproject-template.toml
 ├── coding-problem-solver/
-│   ├── SKILL.md
-│   └── references/
-│       └── output-template.md
 ├── git-workflow/
-│   └── SKILL.md
 ├── git-worktree/
-│   └── SKILL.md
+├── opensearch-client/
+├── opensearch-server/
 └── scripts/
     ├── sync-to-claude-code.sh
     └── skill-manager.sh
@@ -115,6 +114,7 @@ description: ...          # 200자 이내, 트리거 조건 포함
 
 ## 📝 변경 이력
 
+- 2026-01-01: opensearch-client, opensearch-server 스킬 추가
 - 2025-12-31: git-workflow, git-worktree 스킬 추가
 - 2025-12-26: python-project에 references/, assets/ 추가
 - 2025-12-26: skill-manager.sh 추가 (스킬 활성화/비활성화)
