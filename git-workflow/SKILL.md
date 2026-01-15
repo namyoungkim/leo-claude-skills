@@ -1,6 +1,6 @@
 ---
 name: git-workflow
-description: GitHub Flow branching strategy guide. Use for branch creation, naming conventions, PR workflows, and commit messages. Triggers on "branch strategy", "commit message", "create PR", "feature branch".
+description: GitHub Flow guide. MUST invoke before starting any feature/fix implementation. Triggers: branch, commit, PR, implement, 구현, 새 기능
 ---
 
 # Git Workflow (GitHub Flow)
