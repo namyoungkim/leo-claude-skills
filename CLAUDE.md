@@ -39,6 +39,7 @@ description: ...          # 200 chars max, include trigger conditions
 - **git-worktree**: Git worktree for parallel Claude development, multiple instances
 - **opensearch-client**: OpenSearch Python client library for hybrid search with Korean support
 - **opensearch-server**: Docker-based OpenSearch server setup and management
+- **product-planning**: 인터뷰 기반 제품/프로젝트 기획 (Impact Mapping, User Story Mapping, C4 Model, ADR)
 
 ## Scripts
 
