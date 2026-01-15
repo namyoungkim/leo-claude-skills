@@ -17,7 +17,8 @@ leo-claude-skills/
 │   └── assets/            # Optional - templates, config files
 └── scripts/
     ├── sync-to-claude-code.sh
-    └── skill-manager.sh
+    ├── skill-manager.sh
+    └── validate-skills.sh
 ```
 
 ## Skill Definition Format
@@ -51,10 +52,14 @@ description: ...          # 200 chars max, include trigger conditions
 ./scripts/skill-manager.sh list
 ./scripts/skill-manager.sh disable <skill-name>
 ./scripts/skill-manager.sh enable <skill-name>
+
+# Validate YAML frontmatter
+./scripts/validate-skills.sh
 ```
 
 - `sync-to-claude-code.sh`: Creates symlinks from this repo to `~/.claude/skills/`
 - `skill-manager.sh`: Moves skills between `~/.claude/skills/` and `~/.claude/skills-disabled/`
+- `validate-skills.sh`: Validates YAML frontmatter in all SKILL.md files
 
 ## Adding a New Skill
 
