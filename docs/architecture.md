@@ -19,7 +19,42 @@ my-plugin/
 │   └── plugin.json      ← 단일 플러그인 정의
 ├── skills/
 ├── agents/
-└── commands/
+├── commands/
+└── hooks/
+    └── hooks.json       ← 자동 로드 (v2.1+)
+```
+
+**plugin.json 형식:**
+
+```json
+{
+  "name": "my-plugin",
+  "description": "Plugin description",
+  "version": "1.0.0",
+  "author": {
+    "name": "Author",
+    "url": "https://github.com/author"
+  },
+  "keywords": ["keyword1", "keyword2"]
+}
+```
+
+**⚠️ 중요: 디폴트 디렉토리 자동 로드**
+
+| 디렉토리 | 용도 | 자동 로드 |
+|----------|------|-----------|
+| `commands/` | 슬래시 명령어 | ✅ |
+| `agents/` | 커스텀 에이전트 | ✅ |
+| `skills/` | 스킬 | ✅ |
+| `hooks/hooks.json` | 훅 설정 | ✅ |
+
+**커스텀 경로 (선택):** 디폴트 외 추가 경로 필요시만 명시
+```json
+{
+  "commands": ["./custom/cmd.md"],
+  "agents": "./custom/agents/",
+  "skills": "./custom/skills/"
+}
 ```
 
 **설치**: `/plugin add <url>`

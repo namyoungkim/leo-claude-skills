@@ -18,13 +18,44 @@ leo-claude-plugin/
 │   └── <agent-name>.md
 ├── commands/                 # 슬래시 명령어 (2개)
 │   └── <command-name>.md
-├── hooks/                   # 훅 설정
+├── hooks/                   # 훅 설정 (자동 로드)
 │   └── hooks.json
 ├── docs/                    # 설계 문서
 │   └── architecture.md      # 플러그인 구조, 마켓플레이스 패턴
 └── scripts/
-    └── validate.sh          # 개발용 검증 (skills, agents, commands, hooks)
+    └── validate.sh          # 개발용 검증 (plugin.json, skills, agents, commands, hooks)
 ```
+
+## plugin.json 형식
+
+```json
+{
+  "name": "plugin-name",
+  "description": "플러그인 설명",
+  "version": "1.0.0",
+  "author": {
+    "name": "Author",
+    "url": "https://github.com/author"
+  },
+  "keywords": ["keyword1", "keyword2"]
+}
+```
+
+**디폴트 디렉토리 (자동 로드):**
+- `commands/` - 슬래시 명령어
+- `agents/` - 커스텀 에이전트
+- `skills/` - 스킬
+- `hooks/hooks.json` - 훅 설정
+
+**커스텀 경로 (선택):**
+```json
+{
+  "commands": ["./custom/cmd.md"],
+  "agents": "./custom/agents/",
+  "skills": "./custom/skills/"
+}
+```
+> 커스텀 경로는 디폴트 디렉토리에 **추가**됨 (대체 아님)
 
 ## 스킬 정의 형식
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 # validate.sh
-# skills, agents, commands, hooks.json 검증
+# plugin.json, skills, agents, commands, hooks.json 검증
 
 set -e
 
@@ -9,6 +9,72 @@ ROOT_DIR="$(dirname "$SCRIPT_DIR")"
 
 errors=0
 total_checked=0
+
+# plugin.json 검증
+echo "Plugin.json"
+echo "--------------------------------"
+plugin_file="$ROOT_DIR/.claude-plugin/plugin.json"
+if [[ -f "$plugin_file" ]]; then
+    total_checked=$((total_checked + 1))
+    plugin_valid=true
+
+    # JSON 문법 검증
+    if command -v jq &> /dev/null; then
+        if ! jq . "$plugin_file" > /dev/null 2>&1; then
+            echo "[FAIL] plugin.json - Invalid JSON syntax"
+            plugin_valid=false
+            errors=$((errors + 1))
+        fi
+    else
+        if ! ruby -rjson -e "JSON.parse(File.read('$plugin_file'))" 2>/dev/null; then
+            echo "[FAIL] plugin.json - Invalid JSON syntax"
+            plugin_valid=false
+            errors=$((errors + 1))
+        fi
+    fi
+
+    if [[ "$plugin_valid" == true ]]; then
+        # 필수 필드 검증
+        name=$(jq -r '.name // empty' "$plugin_file" 2>/dev/null)
+        if [[ -z "$name" ]]; then
+            echo "[FAIL] plugin.json - Missing required field: name"
+            errors=$((errors + 1))
+            plugin_valid=false
+        fi
+
+        # skills 필드 형식 검증 (string 또는 array)
+        skills_type=$(jq -r 'if .skills then (.skills | type) else "missing" end' "$plugin_file" 2>/dev/null)
+        if [[ "$skills_type" != "missing" && "$skills_type" != "array" && "$skills_type" != "string" ]]; then
+            echo "[FAIL] plugin.json - skills must be string or array, got: $skills_type"
+            errors=$((errors + 1))
+            plugin_valid=false
+        fi
+
+        # agents 필드 형식 검증 (string 또는 array)
+        agents_type=$(jq -r 'if .agents then (.agents | type) else "missing" end' "$plugin_file" 2>/dev/null)
+        if [[ "$agents_type" != "missing" && "$agents_type" != "array" && "$agents_type" != "string" ]]; then
+            echo "[FAIL] plugin.json - agents must be string or array, got: $agents_type"
+            errors=$((errors + 1))
+            plugin_valid=false
+        fi
+
+        # commands 필드 형식 검증 (string 또는 array)
+        commands_type=$(jq -r 'if .commands then (.commands | type) else "missing" end' "$plugin_file" 2>/dev/null)
+        if [[ "$commands_type" != "missing" && "$commands_type" != "array" && "$commands_type" != "string" ]]; then
+            echo "[FAIL] plugin.json - commands must be string or array, got: $commands_type"
+            errors=$((errors + 1))
+            plugin_valid=false
+        fi
+
+        if [[ "$plugin_valid" == true ]]; then
+            echo "[OK] plugin.json"
+        fi
+    fi
+else
+    echo "[FAIL] plugin.json not found"
+    errors=$((errors + 1))
+fi
+echo ""
 
 # YAML frontmatter 검증 함수
 validate_yaml_frontmatter() {
