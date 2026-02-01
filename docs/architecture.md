@@ -19,8 +19,37 @@ my-plugin/
 │   └── plugin.json      ← 단일 플러그인 정의
 ├── skills/
 ├── agents/
-└── commands/
+├── commands/
+└── hooks/
+    └── hooks.json       ← 자동 로드 (v2.1+)
 ```
+
+**plugin.json 형식:**
+
+```json
+{
+  "name": "my-plugin",
+  "description": "Plugin description",
+  "version": "1.0.0",
+  "author": {
+    "name": "Author",
+    "url": "https://github.com/author"
+  },
+  "skills": ["./skills/", "./commands/"],
+  "agents": [
+    "./agents/agent-1.md",
+    "./agents/agent-2.md"
+  ]
+}
+```
+
+**⚠️ 중요: 필드 형식**
+
+| 필드 | 형식 | 설명 |
+|------|------|------|
+| `skills` | **배열** | 디렉토리 경로 목록. commands도 여기 포함 |
+| `agents` | **배열** | 개별 .md 파일 경로 목록 |
+| `hooks` | 명시 안함 | v2.1+에서 `hooks/hooks.json` 자동 로드 |
 
 **설치**: `/plugin add <url>`
 

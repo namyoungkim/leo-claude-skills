@@ -18,13 +18,36 @@ leo-claude-plugin/
 │   └── <agent-name>.md
 ├── commands/                 # 슬래시 명령어 (2개)
 │   └── <command-name>.md
-├── hooks/                   # 훅 설정
+├── hooks/                   # 훅 설정 (자동 로드)
 │   └── hooks.json
 ├── docs/                    # 설계 문서
 │   └── architecture.md      # 플러그인 구조, 마켓플레이스 패턴
 └── scripts/
-    └── validate.sh          # 개발용 검증 (skills, agents, commands, hooks)
+    └── validate.sh          # 개발용 검증 (plugin.json, skills, agents, commands, hooks)
 ```
+
+## plugin.json 형식
+
+```json
+{
+  "name": "plugin-name",
+  "description": "플러그인 설명",
+  "version": "1.0.0",
+  "author": {
+    "name": "Author",
+    "url": "https://github.com/author"
+  },
+  "skills": ["./skills/", "./commands/"],
+  "agents": [
+    "./agents/agent-name.md"
+  ]
+}
+```
+
+**주의사항:**
+- `skills`, `agents` 필드는 **배열** 형식 필수
+- `commands`는 `skills` 배열에 포함
+- `hooks`는 Claude Code v2.1+에서 자동 로드 (명시 불필요)
 
 ## 스킬 정의 형식
 
