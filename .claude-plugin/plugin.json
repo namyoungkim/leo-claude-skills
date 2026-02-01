@@ -8,5 +8,8 @@
   },
   "repository": "https://github.com/namyoungkim/leo-claude-plugin",
   "license": "MIT",
+  "skills": "./skills",
+  "agents": "./agents",
+  "commands": "./commands",
   "hooks": "./hooks/hooks.json"
 }
