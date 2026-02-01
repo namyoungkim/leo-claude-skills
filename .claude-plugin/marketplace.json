@@ -1,0 +1,24 @@
+{
+  "name": "leo-plugins",
+  "owner": {
+    "name": "Leo",
+    "url": "https://github.com/namyoungkim"
+  },
+  "metadata": {
+    "description": "Leo's Claude Code plugin collection",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "leo-claude-plugin",
+      "source": {
+        "source": "github",
+        "repo": "namyoungkim/leo-claude-plugin"
+      },
+      "description": "Python, Git, OpenSearch workflows",
+      "version": "1.0.0",
+      "keywords": ["python", "git", "opensearch"],
+      "category": "development"
+    }
+  ]
+}

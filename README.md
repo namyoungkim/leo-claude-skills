@@ -5,8 +5,16 @@ Claude Code 플러그인. Skills, Agents, Commands, Hooks 포함.
 ## 설치
 
 ```bash
-/plugin install namyoungkim/leo-claude-plugin
+# 방법 1: 단일 플러그인으로 설치
+/plugin add https://github.com/namyoungkim/leo-claude-plugin
+
+# 방법 2: 마켓플레이스로 설치
+/plugin marketplace add https://github.com/namyoungkim/leo-claude-plugin
 ```
+
+> **Plugin vs Marketplace**
+> - **Plugin**: 1개 저장소 = 1개 플러그인 (직접 설치)
+> - **Marketplace**: 플러그인 카탈로그에서 선택 설치
 
 ## 구성 요소
 
@@ -59,7 +67,8 @@ Claude Code 플러그인. Skills, Agents, Commands, Hooks 포함.
 ```
 leo-claude-plugin/
 ├── .claude-plugin/
-│   └── plugin.json          # 플러그인 메타데이터
+│   ├── plugin.json          # 플러그인 메타데이터
+│   └── marketplace.json     # 마켓플레이스 카탈로그
 ├── skills/                   # 스킬 (8개)
 │   ├── python-project/
 │   ├── coding-problem-solver/
@@ -75,16 +84,19 @@ leo-claude-plugin/
 ├── commands/                 # 슬래시 명령어 (2개)
 │   ├── setup.md
 │   └── doctor.md
-├── hooks.json                # 훅 설정
+├── hooks/                    # 훅 설정
+│   └── hooks.json
+├── docs/                     # 설계 문서
+│   └── architecture.md       # 플러그인 구조, 마켓플레이스 패턴
 └── scripts/
-    └── validate-skills.sh   # 개발용 검증 스크립트
+    └── validate.sh           # 개발용 검증 스크립트
 ```
 
 ## 개발
 
 ```bash
 # 스킬 YAML frontmatter 검증
-./scripts/validate-skills.sh
+./scripts/validate.sh
 
 # plugin.json 유효성 검사
 cat .claude-plugin/plugin.json | jq .
@@ -112,7 +124,7 @@ description: "스킬 설명. 트리거 조건 포함."
 EOF
 
 # 3. 검증
-./scripts/validate-skills.sh
+./scripts/validate.sh
 ```
 
 ## 라이센스
