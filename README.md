@@ -5,13 +5,16 @@ Claude Code 플러그인. Skills, Agents, Commands, Hooks 포함.
 ## 설치
 
 ```bash
-# 단일 플러그인으로 설치
+# 방법 1: 단일 플러그인으로 설치
 /plugin add https://github.com/namyoungkim/leo-claude-plugin
+
+# 방법 2: 마켓플레이스로 설치
+/plugin marketplace add https://github.com/namyoungkim/leo-claude-plugin
 ```
 
 > **Plugin vs Marketplace**
-> - **Plugin**: 1개 저장소 = 1개 플러그인 (현재 방식)
-> - **Marketplace**: 여러 플러그인의 목록/카탈로그 저장소
+> - **Plugin**: 1개 저장소 = 1개 플러그인 (직접 설치)
+> - **Marketplace**: 플러그인 카탈로그에서 선택 설치
 
 ## 구성 요소
 
